@@ -1,0 +1,13 @@
+version: '3'
+services:
+    envoy: 
+        image: envoyproxy/envoy:v1.18.3
+        volumes:
+            - ./envoy.yaml:/etc/envoy/envoy.yaml
+        ports:
+            - "10000:10000" # 服务监听端口
+            - "9901:9901" # 管理端口
+            - ”443:443“ # https端口
+        network_mode: "bridge"
+        restart: always
+  
